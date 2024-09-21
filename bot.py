@@ -1,6 +1,9 @@
+import os
 import discord
 from discord.ext import commands
 import asyncio
+
+from myserver import server_on
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -38,6 +41,6 @@ async def verify(ctx):
 
     except asyncio.TimeoutError:
         await ctx.author.send('คุณใช้เวลานานเกินไปในการตอบกลับ! การยืนยันถูกยกเลิก.')
+server_on()
 
-TOKEN = 'MTI4NzA1ODMxODQzNDYzMTY5MA.Gntv6U.TMUAp6rstFRtXvG1Ksdp_wNxPsB2MFLnkHvW20'  # แทนที่ด้วย Token ของบอทของคุณ
-bot.run(TOKEN)
+bot.run(os.getenv)('TOKEN')
